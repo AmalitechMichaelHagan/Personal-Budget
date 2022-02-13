@@ -1,0 +1,14 @@
+{
+  "name": "personal-budget",
+  "version": "1.0.0",
+  "description": "API that allows clients to create and manage a personal budget.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Hagan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
