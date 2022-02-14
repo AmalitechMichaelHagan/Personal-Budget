@@ -7,7 +7,7 @@ class envelope {
     }
 
      creditTransaction(description, amount){
-      this.balance = amount;
+      this.balance += amount;
 
       this.transactions.push({
          description: description,
@@ -19,6 +19,10 @@ class envelope {
 
 
      debitTransaction(description, amount){
+      if(this.balance<amount){
+         return "Your Balance is insufficient"
+      }else{
+
       this.balance-=amount;
 
       this.transactions.push({
@@ -26,6 +30,8 @@ class envelope {
          amount : `-${amount}`,
          date : new Date().toISOString().substring(0,10)
       })
+      return "Transaction succesful"
+      }
      }
 
 
