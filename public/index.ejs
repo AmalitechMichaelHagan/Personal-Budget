@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <title>Personal Budget</title>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1 style="color: white;">Personal Budget</h1>
+    <div class="container">
+        <form 
+        action="/api/addenvelope" 
+        method="POST"
+        >
+          <p>Add Envelope</p>
+          <input name="name" value="" type="text" placeholder="Name of Envelope" required><br>
+          <input name="amount" value="" type="number" placeholder="Amount" required><br>
+          <button id="ad" type="submit">Add</button><br>          
+        </form>
+      
+        <div class="drops">
+          <div class="drop drop-1"></div>
+          <div class="drop drop-2"></div>
+          <div class="drop drop-3"></div>
+          <div class="drop drop-4"></div>
+          <div class="drop drop-5"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <form 
+        action="/api/envelopes/name" 
+        method="GET"
+        >
+          <p>Display Envelope</p>
+          <p>Leave Empty to display all envelopes</p>
+          <input name="name" value="" type="text" placeholder="Name of Envelope"><br>
+          <button type="submit">Display</button><br>          
+        </form>
+      
+        <div class="drops">
+          <div class="drop drop-1"></div>
+          <div class="drop drop-2"></div>
+          <div class="drop drop-3"></div>
+          <div class="drop drop-4"></div>
+          <div class="drop drop-5"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <form 
+        action="/api/envelopes/update/debit" 
+        method="POST"
+        >
+          <p>Make Purchase</p>
+          <input name="name" value="" type="text" placeholder="Name of Envelope" required><br>
+          <input name="description" value="" type="text" placeholder="Purchase Description"><br>
+          <input name="amount" value="" type="number" placeholder="Amount"required><br>
+          <button type="submit">Buy</button><br>          
+        </form>
+      
+        <div class="drops">
+          <div class="drop drop-1"></div>
+          <div class="drop drop-2"></div>
+          <div class="drop drop-3"></div>
+          <div class="drop drop-4"></div>
+          <div class="drop drop-5"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <form 
+        action="/api/envelopes/update/credit" 
+        method="POST"
+        >
+          <p>Refill</p>
+          <p>Click button below to refill all envelopes</p>
+          <button type="submit">Refill</button><br>          
+        </form>
+      
+        <div class="drops">
+          <div class="drop drop-1"></div>
+          <div class="drop drop-2"></div>
+          <div class="drop drop-3"></div>
+          <div class="drop drop-4"></div>
+          <div class="drop drop-5"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <form 
+        action="/api/envelopes/delete/name" 
+        method="GET"
+        >
+          <p>Remove Envelope</p>
+          <input name="name" value="" type="text" placeholder="Name of Envelope" required><br>
+          <button id="del" type="submit">Delete</button><br>          
+        </form>
+      
+        <div class="drops">
+          <div class="drop drop-1"></div>
+          <div class="drop drop-2"></div>
+          <div class="drop drop-3"></div>
+          <div class="drop drop-4"></div>
+          <div class="drop drop-5"></div>
+        </div>
+      </div>
+
+</body>
+</html>

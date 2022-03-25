@@ -26,7 +26,7 @@ envelope that stores money left-over when a new monthly income is added.
 
 ## Status
 
-Project is: _70% COMPLETE_
+Project is: COMPLETE
 
 ## Inspiration
 

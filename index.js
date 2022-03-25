@@ -4,12 +4,6 @@ NB. It includes a default savings envelope that stores money left-over when
 a new monthly income is added. 
 */
 
-/*
-*TO DO
-Add code to check if amount being deducted doesn't exceed balance
-*/
-
-
 const express = require('express');
 const app = express();
 const PORT = 3000;
@@ -19,6 +13,11 @@ const savings = new envelope('savings',0); //First envelope that stores savings
 let totalBudget = 5000;   //Total monthly amount
 let allocatedBudget = [100]; //array that holds each envelope's allocated monthly budget. 100 allocated to savings by default
 let envelopes = [savings];
+
+app.use(express.static(__dirname + '/public'));
+app.set('view engine','ejs');
+app.set('views','./public'); 
+
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -33,7 +32,7 @@ console.log('Listening on port '+PORT);
 
 app.get('/',(req,res)=>{
 
-    res.send('Hello World')
+    res.render('index');
  
 })
 
@@ -79,11 +78,13 @@ app.get('/api/all',(req,res)=>{
 })
 
 //retrieve a single envelope
-app.get('/api/envelopes/:envelopeName',(req,res)=>{
-    let name = req.params.envelopeName;
-    
+app.get('/api/envelopes/name',(req,res)=>{
+
+    if(!req.query.name){
+        res.redirect('/api/all');
+    }
+    let name = req.query.name;
     let result = envelopes.find(found => found.category === name);
-    
     res.json(result);
 })
 
@@ -133,9 +134,9 @@ let savings = 0;
 })
 
 //delete envelope
-app.get('/api/envelopes/delete/:envelopeName', (req,res)=>{
+app.get('/api/envelopes/delete/name', (req,res)=>{
 
-    let name = req.params.envelopeName;
+    let name = req.query.name;
     if(name !== envelopes[0].category){ //Makes sure savings envelope is not deleted
     let temp = envelopes.filter(element=>element.category!==name);
     envelopes = temp;
